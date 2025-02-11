@@ -21,7 +21,8 @@ AIFNF (**AI Financial Neural Framework**) is a decentralized AI-powered trading 
 - Fetch **real-time SOL balance** and transactions
 - **REST API** architecture with Express.js
 - Secure connection with **CORS and dotenv**
-- Implemented with **TypeScript**  
+- Implemented with **TypeScript and Express.js**
+- **MongoDB** for Trade History Storage  
 
 ---
 
@@ -38,22 +39,27 @@ AIFNF-API/
 │   │   ├── routes/             # API routes
 │   │   │   ├── aiRoutes.ts
 │   │   │   ├── solanaRoutes.ts
-│   │   ├── config/             # Database connection
+│   │   ├── ai/                 # AI Trading Strategies
+│   │   │   ├── 001.ts
+│   │   │   ├── SAM.ts
+│   │   │   ├── IVY.ts
+│   │   │   ├── JEFF.ts
+│   │   ├── config/             # Database and API Configurations
 │   │   │   ├── db.ts
-│   │   ├── index.ts            # Main entry point
-│   ├── .env                    # Environment variables
+│   │   ├── index.ts            # Main Entry Point
+│   ├── .env                    # Environment Variables
 │   ├── package.json            # Dependencies
-│   ├── tsconfig.json           # TypeScript configuration
+│   ├── tsconfig.json           # TypeScript Configuration
 │   ├── README.md               # Documentation
-│   ├── nodemon.json            # Nodemon configuration
+│   ├── nodemon.json            # Nodemon Configuration
 ```
 
 ## Installation
 
 First, **clone** the repository:
 ```sh
-git clone https://github.com/yourusername/AIFNF-API.git
-cd AIFNF-API
+git clone https://github.com/AIFNF/AI-FNF.git
+cd AI-FNF
 ```
 
 Then, **install dependencies**:
@@ -112,17 +118,17 @@ curl -X GET "http://localhost:5000/api/solana/transactions/FakeSolanaAddress123"
 ## Run the Project
 
 ### Start Server (Development Mode)
-```sh
+```
 npm run dev
 ```
 
-OR
-```sh
+OR  
+```
 npx ts-node src/index.ts
 ```
 
 ### Start Server (Production Mode)
-```sh
-npm run build 
+```
+npm run build
 npm start
 ```

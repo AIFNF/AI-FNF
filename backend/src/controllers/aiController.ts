@@ -1,32 +1,21 @@
 import { Request, Response } from "express";
-import Trade from "../models/Trade";
+import { run001 } from "../ai/001";
+import { runSAM } from "../ai/sam";
+import { runIvy } from "../ai/ivy";
+import { runJeff } from "../ai/jeff";
 
-const AI_TRADERS: { [key: string]: (params: any) => string } = {
-  "001": (params) => `Executing 001 AI: ${params.strategy}`,
-  "SAM": (params) => `Executing S.A.M AI: Stop-Loss ${params.stopLoss}`,
-  "Ivy": (params) => `Executing Ivy AI: Swing trade for ${params.duration} hours`,
-  "JEFF": (params) => `Executing JEFF AI: Long-term position in ${params.asset}`,
-};
-
-// Run AI Trading
-export const runAI = async (req: Request, res: Response): Promise<void> => {
-  const { user, aiName, params } = req.body;
-
-  if (!AI_TRADERS[aiName]) {
-    res.status(400).json({ error: "Invalid AI name" });
-    return;
+export const executeAI = async (req: Request, res: Response) => {
+  const { aiName } = req.params;
+  try {
+    switch (aiName) {
+      case "001": await run001(); break;
+      case "SAM": await runSAM(); break;
+      case "Ivy": await runIvy(); break;
+      case "Jeff": await runJeff(); break;
+      default: return res.status(400).json({ message: "Invalid AI" });
+    }
+    res.json({ message: `${aiName} executed successfully!` });
+  } catch (error) {
+    res.status(500).json({ message: "Execution failed", error });
   }
-
-  const result: string = AI_TRADERS[aiName](params);
-  const trade = new Trade({ user, aiName, params, result });
-  await trade.save();
-
-  res.json({ message: result });
-};
-
-// Get Trading History
-export const getTradeHistory = async (req: Request, res: Response): Promise<void> => {
-  const { user } = req.params;
-  const trades = await Trade.find({ user }).sort({ createdAt: -1 });
-  res.json(trades);
 };
