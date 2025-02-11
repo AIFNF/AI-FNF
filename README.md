@@ -1,10 +1,10 @@
-# 🚀 AIFNF API - AI Financial Neural Framework
+# AIFNF API - AI Financial Neural Framework
 
 AIFNF (**AI Financial Neural Framework**) is a decentralized AI-powered trading system operating in the **Solana ecosystem**. This API allows users to run multiple **AI trading strategies**, fetch **real-time Solana data**, and manage trade history.
 
 ---
 
-## 📖 Table of Contents
+## Table of Contents
 - [Features](#features)
 - [Project Structure](#project-structure)
 - [Installation](#installation)
@@ -15,17 +15,17 @@ AIFNF (**AI Financial Neural Framework**) is a decentralized AI-powered trading 
 
 ---
 
-## 🔥 Features
-✅ Run multiple **AI Trading Strategies**  
-✅ Store **trade history** in MongoDB  
-✅ Fetch **real-time SOL balance** and transactions  
-✅ **REST API** architecture with Express.js  
-✅ Secure connection with **CORS and dotenv**  
-✅ Implemented with **TypeScript**  
+## Features
+- Run multiple **AI Trading Strategies**
+- Store **trade history** in MongoDB
+- Fetch **real-time SOL balance** and transactions
+- **REST API** architecture with Express.js
+- Secure connection with **CORS and dotenv**
+- Implemented with **TypeScript**  
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 ```
 AIFNF-API/
 │── backend/
@@ -48,7 +48,7 @@ AIFNF-API/
 │   ├── nodemon.json            # Nodemon configuration
 ```
 
-## ⚡ Installation
+## Installation
 
 First, **clone** the repository:
 ```sh
@@ -61,7 +61,7 @@ Then, **install dependencies**:
 npm install
 ```
 
-## 🔑 Environment Variables
+## Environment Variables
 
 Create a `.env` file in the `backend/` directory:
 ```ini
@@ -70,25 +70,25 @@ MONGO_URI=mongodb://localhost:27017/aifnf
 SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
 ```
 
-## 🔗 API Endpoints
+## API Endpoints
 
-### 📌 **AI Trading API**
+### **AI Trading API**
 
 | Method | Endpoint | Description |
 |--------|---------|-------------|
 | `POST` | `/api/run-ai` | Run AI Trading Strategy |
 | `GET`  | `/api/trade-history/:user` | Get User's Trading History |
 
-### 📌 **Solana API**
+### **Solana API**
 
 | Method | Endpoint | Description |
 |--------|---------|-------------|
 | `GET`  | `/api/solana/balance/:address` | Get SOL Balance |
 | `GET`  | `/api/solana/transactions/:address` | Get Recent Transactions |
 
-## 🚀 Usage
+## Usage
 
-### 📌 Run AI Trading Strategy
+### Run AI Trading Strategy
 ```sh
 curl -X POST "http://localhost:5000/api/run-ai" \
      -H "Content-Type: application/json" \
@@ -99,19 +99,19 @@ curl -X POST "http://localhost:5000/api/run-ai" \
         }'
 ```
 
-### 📌 Fetch SOL Balance
+### Fetch SOL Balance
 ```sh
 curl -X GET "http://localhost:5000/api/solana/balance/FakeSolanaAddress123"
 ```
 
-### 📌 Fetch Recent Transactions
+### Fetch Recent Transactions
 ```sh
 curl -X GET "http://localhost:5000/api/solana/transactions/FakeSolanaAddress123"
 ```
 
-## 🏃 Run the Project
+## Run the Project
 
-### 📌 Start Server (Development Mode)
+### Start Server (Development Mode)
 ```sh
 npm run dev
 ```
@@ -121,7 +121,7 @@ OR
 npx ts-node src/index.ts
 ```
 
-### 📌 Start Server (Production Mode)
+### Start Server (Production Mode)
 ```sh
 npm run build 
 npm start
